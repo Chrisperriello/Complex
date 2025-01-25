@@ -217,7 +217,9 @@ public class Cnumber
     {
         return ((c1.Re).Equals(c2.Re) && (c1.Im).Equals(c2.Im));
     }
-
+/// <summary>
+/// 
+/// </summary>
     public void print_polar()
     {
         Console.WriteLine($"{Math.Round(Modulus,3)}(cos({Math.Round(Theta,3)}) + i sin({Math.Round(Theta,3)}))");
