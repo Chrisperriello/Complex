@@ -52,8 +52,12 @@ public class Cnumber
         }
         else if (flag == 1)
         {
-            Modulus = arg1;
+            Modulus = double.Abs(arg1);
             Theta = arg2;
+            if (Modulus < 0)
+            {
+                Theta += _pi;
+            }
             Re = arg1 * Math.Cos(arg2);
             Im = arg1 * Math.Sin(arg2);
 
@@ -230,6 +234,51 @@ public class Cnumber
         Console.WriteLine($"{Math.Round(Modulus, 3)}e^{Math.Round(Theta,3)}i");
     }
 
+    private static Cnumber Pow_one(Cnumber bottom, double exp)
+    {
+        double r = Math.Pow(bottom.Modulus,exp);
+        double theta = bottom.Theta * exp;
+        return new Cnumber(r,theta,flag:1);
+    }
+
+    public static Cnumber Pow(Cnumber bottom, double exp)
+    {
+        if (exp >= 1)
+        {
+            return Pow_one(bottom, exp);
+        }
+
+        return bottom;
+    }
+
+    public static Cnumber read_polar(String input)
+    {
+        return null;
+    }
+
+    private int find_r(String i)
+    {
+        if (i[0] == ' ')
+        {
+            throw new ArgumentException("Sting cannot start with space", nameof(i));
+        }
+        int x = 0;
+        while (i[x] != 'e')
+        {
+            x++;
+        }
+
+        if (x != 0)
+        {
+            return x;
+        }
+        else
+        {
+            
+        }
+
+        return 0;
+    }
 
 }
 
